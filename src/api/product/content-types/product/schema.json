@@ -4,20 +4,20 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Product"
+    "displayName": "Products"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": false
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string",
       "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     },
     "description": {
       "type": "richtext"
@@ -26,16 +26,48 @@
       "type": "decimal",
       "required": true
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
+    "discountPrice": {
+      "type": "decimal"
     },
-    "images": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images"
+    "preorder": {
+      "type": "boolean",
+      "default": false
+    },
+    "stockStatus": {
+      "type": "enumeration",
+      "default": "inStock",
+      "enum": [
+        "inStock",
+        "outOfStock",
+        "limitedStock"
       ]
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "text"
+    },
+    "seoKeywords": {
+      "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "customerReviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::customer-review.customer-review",
+      "mappedBy": "product"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "products"
     }
   }
 }

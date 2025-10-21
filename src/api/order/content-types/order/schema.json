@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "orderNumber": {
+      "type": "uid",
+      "targetField": "customerName"
+    },
+    "customerName": {
+      "type": "string",
+      "required": true
+    },
+    "customerEmail": {
+      "type": "email",
+      "required": true
+    },
+    "orderDate": {
+      "type": "datetime",
+      "required": true,
+      "default": "NOW"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "orders"
+    },
+    "totalAmount": {
+      "type": "decimal",
+      "required": true
+    },
+    "shippingAddress": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "featured-products",
+  "info": {
+    "singularName": "featured-product",
+    "pluralName": "featured-products",
+    "displayName": "Featured Product"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "order": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}
